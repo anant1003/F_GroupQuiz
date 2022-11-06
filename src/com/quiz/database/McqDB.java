@@ -35,14 +35,14 @@ public class McqDB {
 		int min = 1;
 		int score =0;
 		int range = 20;
-		int count = 0, i = 0;
+		int count = 0;
 		ArrayList<Integer> al = new ArrayList<>();
 		while (count != 10) {
-			int rand = (int) (Math.random() * range) + min;
-			if (!al.contains(rand)) {
+			int random = (int) (Math.random() * range) + min;
+			if (!al.contains(random)) {
 				count++;
-				al.add(rand);
-				McqModel Q = mcqList.get(rand);
+				al.add(random);
+				McqModel Q = mcqList.get(random);
 				System.out.println("\n"+count+") "+Q.getQuestions());
 				System.out.println(Q.getOption_a());
 				System.out.println(Q.getOption_b());

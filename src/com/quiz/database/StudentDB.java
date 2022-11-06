@@ -93,7 +93,7 @@ public class StudentDB {
 			if (!examstatus)
 				System.out.println(fName+" "+lName+" has not appeared for the test...");
 			else {
-				System.out.println("\n***************Your Result******************");
+				System.out.println("\n************************ YOUR RESULT ***************************");
 				System.out.println("--------------------------------------------");
 				System.out.println("Roll No : " + rollNo);
 				System.out.println("Name 	: " + fName + " " + lName);
@@ -111,7 +111,7 @@ public class StudentDB {
 		List<StudentModel> slist = loadStudentintoList();
 		Collections.sort(slist, new MarksComparator());
 		Iterator<StudentModel> itr = slist.iterator();
-		System.out.println("***************Student Records***************");
+		System.out.println("\n************************ STUDENT RECORDS ************************\n");
 		System.out.println("--------------------------------------------");
 		System.out.println("RollNo\tStudent Name\tMarks\tGrade");
 		System.out.println("--------------------------------------------");
