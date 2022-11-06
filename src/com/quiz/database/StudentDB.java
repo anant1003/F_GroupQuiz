@@ -72,5 +72,55 @@ public class StudentDB {
 		}
 	}
 
-	
+	public static void displayMarksById(int rollNo) {
+		Connection con = JDBCConnection.getConnection();
+		String query = "select fname,lname,marks,examstatus from student where rollno=?";
+
+		try {
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, rollNo);
+			ResultSet rs = pst.executeQuery();
+			String fName = "";
+			String lName = "";
+			int marks = 0;
+			boolean examstatus = false;
+			while (rs.next()) {
+				fName = rs.getString(1);
+				lName = rs.getString(2);
+				marks = rs.getInt(3);
+				examstatus = rs.getBoolean(4);
+			}
+			if (!examstatus)
+				System.out.println(fName+" "+lName+" has not appeared for the test...");
+			else {
+				System.out.println("\n***************Your Result******************");
+				System.out.println("--------------------------------------------");
+				System.out.println("Roll No : " + rollNo);
+				System.out.println("Name 	: " + fName + " " + lName);
+				System.out.println("Marks 	: " + marks);
+				System.out.println("Grade 	: " + Validation.gradeValidation(marks));
+				System.out.println("--------------------------------------------");
+			}
+		} catch (SQLException e) {
+			System.out.println(
+					"Exception occured while Connecting to Database in StudentDB class & loadStudentintoList()");
+		}
+	}
+
+	public static void displayStudentList() {
+		List<StudentModel> slist = loadStudentintoList();
+		Collections.sort(slist, new MarksComparator());
+		Iterator<StudentModel> itr = slist.iterator();
+		System.out.println("***************Student Records***************");
+		System.out.println("--------------------------------------------");
+		System.out.println("RollNo\tStudent Name\tMarks\tGrade");
+		System.out.println("--------------------------------------------");
+		while (itr.hasNext()) {
+			StudentModel sm = itr.next();
+			System.out.println(" " + sm.getRollno() + "\t" + sm.getFirstName() + " " + sm.getLastName() + "\t  "
+					+ (sm.isExamstatus()?sm.getScore():"NA") + "\t  " + (sm.isExamstatus()?Validation.gradeValidation(sm.getScore()):"NA"));
+		}
+		System.out.println("--------------------------------------------");
+	}
+
 }
