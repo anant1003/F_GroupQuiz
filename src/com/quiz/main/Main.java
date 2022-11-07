@@ -32,40 +32,26 @@ public class Main {
 				do {
 				if(userName.equalsIgnoreCase("Admin") && password.equalsIgnoreCase("Admin")) {
 					System.out.println("\n*********************** STUDENT INFORMATION *********************");
-					System.out.println("\n1. Single Student Detail\n2. All Student Details\n3. Exit");
+					System.out.println("\n1. Single Student Detail\n2. All Student Details\n3. Return to login screen");
 					System.out.print("Select option: ");
 					int option = scan.nextInt();
 					if(option==1) {
 						System.out.print("\nEnter RollNo:");
 						int rollNo = scan.nextInt();
 						StudentDB.displayMarksById(rollNo);
-						System.out.print("\nEnter yes to return to Student Information section: ");
-						String info = scan.next();
-						if(info.equals("yes")) {
 						flag2=true;
-						}else if(info.equals("no")){
-							flag1=true;
-							break;
-						}
 					}else if(option==2) {
 						StudentDB.displayStudentList();
-						System.out.print("\nEnter yes to return to Student Information section: ");
-						String info = scan.next();
-						if(info.equals("yes")) {
-						flag2=true;
-						}else if(info.equals("no")){
-							flag1=true;
-							break;
-						}
 					}else if(option == 3) {
 						flag1=true;
 						break;
+					}else {
+						System.out.println("\nWrong Input!!!\nPlease select from the given options.\n");
 					}
 				}
 			}while(flag2);
-				break;
-			default:
-				System.out.println("\nWrong Input!!!\nPlease select from the given options.\n");
+				
+			default: System.out.println("\nWrong Input!!!\nPlease select from the given options.\n");
 			}
 			
 		}while(flag1);
