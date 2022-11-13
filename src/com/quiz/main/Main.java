@@ -13,13 +13,15 @@ public class Main {
 		boolean flag1 = true;
 		do {
 			System.out.println("\n************************* LOGIN DETAILS *************************\n");
-			System.out.println("1. Student Login\n2. Admin Login");
+			System.out.println("1. Student Login\n2. Admin Login\n3. Exit");
 			System.out.print("Select option: ");
 			int input =scan.nextInt();
 			switch(input) {
 			case 1:
-				flag1 = false;
+				
+				
 				StudentDB.studentLogin();
+				flag1 = true;
 				break;
 			case 2:
 				flag1 = false;
@@ -50,7 +52,11 @@ public class Main {
 					}
 				}
 			}while(flag2);
-				
+				break;
+			case 3:	
+				flag1=false;
+				System.out.println("\nYou have successfully logged off");
+				break;
 			default: System.out.println("\nWrong Input!!!\nPlease select from the given options.\n");
 			}
 			
