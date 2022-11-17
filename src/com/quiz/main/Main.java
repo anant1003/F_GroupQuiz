@@ -18,8 +18,6 @@ public class Main {
 			int input =scan.nextInt();
 			switch(input) {
 			case 1:
-				
-				
 				StudentDB.studentLogin();
 				flag1 = true;
 				break;

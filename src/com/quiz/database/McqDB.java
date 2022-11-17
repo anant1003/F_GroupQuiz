@@ -50,8 +50,21 @@ public class McqDB {
 				System.out.println(Q.getOption_d());
 				System.out.print("Select option:");
 				int ans = scan.nextInt();
+				if(ans==1 || ans==2 || ans==3 || ans==4) {
 				if (ans == Q.getcAns()) {
 					score++;
+				}
+				}else {
+					System.out.println("\n"+count+") "+Q.getQuestions());
+					System.out.println(Q.getOption_a());
+					System.out.println(Q.getOption_b());
+					System.out.println(Q.getOption_c());
+					System.out.println(Q.getOption_d());
+					System.out.println("Please select from the given option:");
+					int ans1 = scan.nextInt();
+					if (ans1 == Q.getcAns()) {
+						score++;
+					}
 				}
 			}
 

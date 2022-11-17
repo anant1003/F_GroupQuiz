@@ -12,9 +12,9 @@ public class JDBCConnection {
 			String url = "jdbc:mysql://localhost:3306/quiz?characterEncoding=latin1";
 			con = DriverManager.getConnection(url, "root", "root");
 		} catch (ClassNotFoundException e) {
-			System.out.println("Exception occured while Loading the Driver Class in JDBCConnection class");
+			System.out.println("Exception occured while Loading the Driver Class in JDBCConnection class and getConnection()");
 		}catch (SQLException e) {
-			System.out.println("Exception occured while Connecting to Database in JDBCConnection class");
+			System.out.println("Exception occured while Connecting to Database in JDBCConnection class and getConnection()");
 		}
 		return con;
 	}

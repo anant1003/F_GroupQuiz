@@ -42,19 +42,30 @@ public class StudentDB {
 		String password = scan.next();
 		List<StudentModel> slist = loadStudentintoList();
 		Iterator<StudentModel> itr = slist.iterator();
+		boolean flag = false;
 		while (itr.hasNext()) {
 			StudentModel s = (StudentModel) itr.next();
-			if (s.getRollno() == rollNo && s.getPassword().equals(password)) {
+			if (s.getRollno() == rollNo) {
+				flag=true;
+				if(s.getPassword().equals(password)){
+					
 				if (s.isExamstatus() == true) {
 					displayMarksById(rollNo);
-				} else {
+				}else {
 					System.out.println("\nHi " + s.getFirstName() + " " + s.getLastName());
 					int score = McqDB.startQuiz();
 					updateScoreInDB(rollNo, score);
 					System.out.println("\nYour test is submitted successfully\n");
 					displayMarksById(rollNo);
 				}
+				}else {
+					System.out.println("Your Password is incorrect!!!");
+				}	
+				
 			}
+		}
+		if(!flag) {
+			System.out.println("Your Roll No. is incorrect!!!");
 		}
 	}
 
